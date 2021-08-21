@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: http-monitor-deployment
+  labels:
+      app: http-monitor
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: http-monitor
+  template:
+    metadata:
+      labels:
+        app: http-monitor
+    spec:
+      containers:
+      - name: http-monitor
+        image: http_monitor:1.0.0 
+        ports:
+        - containerPort: 8080
